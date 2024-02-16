@@ -26,6 +26,10 @@ function onInput(evt) {
 
 function onFormSubmit(evt) {
     evt.preventDefault();
+    if (emailInput.value === "" || msgInput.value === "") {
+        window.alert("Please, fill up every field");
+        return;
+    }
     console.log(formData);
     evt.currentTarget.reset();
     localStorage.clear();
