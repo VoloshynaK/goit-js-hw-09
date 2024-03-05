@@ -20,7 +20,7 @@ form.addEventListener("submit", onFormSubmit)
 populateTextAreas();
 
 function onInput(evt) {
-    formData[evt.target.name] = evt.target.value;
+    formData[evt.target.name] = evt.target.value.trim();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
@@ -30,12 +30,13 @@ function onFormSubmit(evt) {
         window.alert("Please, fill up every field");
         return;
     }
+    formData.email = emailInput.value.trim();
+    formData.message = msgInput.value.trim();
+    
     console.log(formData);
     evt.currentTarget.reset();
     localStorage.clear();
 }
-
-
 
 function populateTextAreas() {
     const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
